@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
+    <title>Web Chart</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr  class="mytable-rows">
+                            <th>#</th>
+                            <th>New template</th>
+                            <th>Form Title</th>
+                            <th>Logo</th>
+                            <th>Categories</th>
+                            <th>labels</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr  class="mytable-rows">
+                            <td>1</td>
+                            <td>life balance wheel</td>
+                            <td>form one</td>
+                            <td>null</td>
+                            <td>8</td>
+                            <td>Row labels</td>
+                        </tr>
+                        <tr class="mytable-rows">
+                            <td>2</td>
+                            <td> balance wheel</td>
+                            <td>form two</td>
+                            <td>Top</td>
+                            <td>20</td>
+                            <td > labels</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <button id="getData">get Data</button>
+    <div id="names">
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>Property 1: <span id="prop1"></span></p>
+                <p>Property 2: <span id="prop2"></span></p>
+                <p>Property 3: <span id="prop3"></span></p>
+                <p>Property 4: <span id="prop4"></span></p>
+                <p>Property 5: <span id="prop5"></span></p>
+                <p>Property 6: <span id="prop6"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+
+</html>
+<style>
+      .table td {
+    padding: 0.25rem;
+    font-size: 0.8rem;
+  }
+  
+  .table tr {
+    line-height: 1rem;
+  }.table th {
+    line-height: 1rem;
+    font-weight: 400;
+    padding: 0.25rem;
+    font-size: 1rem;
+  }
+  </style>
+  
