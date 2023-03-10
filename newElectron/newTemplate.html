@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
+    <title>New Template</title>
+</head>
+
+<body>
+    <script>
+        alert("called from app")
+    </script>
+    <div class="container">
+        <form class="row g-3 needs-validation" validate>
+            <div class="col-md-12">
+                <label for="MyName" class="form-label"> Template </label>
+                <input type="text" class="form-control  form-control-sm" id="MyName" required>
+
+            </div>
+            <div class="col-md-12">
+                <label for="formtitle" class="form-label"> Form Title </label>
+                <input type="text" class="form-control  form-control-sm" id="formtitle" required>
+            </div>
+            <div class="col-md-12">
+                <label for="formFileSm" class="form-label">Upload Logo</label>
+                <input class="form-control form-control-sm" id="formFileSm" type="file">
+
+            </div>
+            <div class="col-md-6">
+                <label for="label" class="form-label"> Label </label>
+                <input type="number" class="form-control  form-control-sm" id="label" required>
+            </div>
+
+
+            <div class="col-md-6 mb-3">
+                <label for="color" class="form-label">Pick Color</label>
+                <input type="color" class="form-control form-control-sm form-control-color" id="color"
+                    value="#563123" title="Choose your color">
+            </div>
+            <div class="col-md-12">
+                <button type="button" class="btn btn-outline-dark   mr-3">Cancel</button>
+                <button type="button" class="btn btn-success " id="savebtn">Submit</button>
+            </div>
+
+        </form>
+    </div>
+    <script src="./template.js"></script>
+
+</body>
+
+</html>

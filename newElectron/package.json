@@ -1,0 +1,17 @@
+{
+  "name": "newelectron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "electron": "^23.1.2",
+    "nedb": "^1.8.0"
+  }
+}

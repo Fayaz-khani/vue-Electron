@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
+    <title>Web Chart</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <table class="table" id="customTable">
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        window.api.gettemplate().then((templatedata) => {
+            alert(templatedata.length)
+
+            var cols = [];
+
+            for (var i = 0; i < templatedata.length; i++) {
+                for (var k in templatedata[i]) {
+                    if (cols.indexOf(k) === -1) {
+                        cols.push(k);
+                    }
+                }
+            }
+            var table = document.getElementById("customTable");
+            var tr = table.insertRow(-1);
+            for (var i = 0; i < cols.length; i++) {
+                var theader = document.createElement("th");
+                theader.innerHTML = cols[i];
+                tr.appendChild(theader);
+            }
+            for (var i = 0; i < templatedata.length; i++) {
+                trow = table.insertRow(-1);
+                for (var j = 0; j < cols.length; j++) {
+                    var cell = trow.insertCell(-1);
+                    cell.innerHTML = templatedata[i][cols[j]];
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
+<style>
+    .table td {
+        padding: 0.25rem;
+        font-size: 0.8rem;
+    }
+
+    .table tr {
+        line-height: 1rem;
+    }
+
+    .table th {
+        line-height: 1rem;
+        font-weight: 400;
+        padding: 0.25rem;
+        font-size: 1rem;
+    }
+</style>
