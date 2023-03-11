@@ -12,4 +12,6 @@ function callfun() {
     templateArray.Color = document.getElementById('color').value;
     // alert("called")
     window.api.setTemplates(templateArray);
+    // window.api.closeTemplate();
+
 }

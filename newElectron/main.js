@@ -3,18 +3,18 @@ const path = require('path')
 const { Menu } = require('electron')
 const { dialog } = require('electron')
 const { type } = require('os')
-var Datastore = require('nedb'), db = new Datastore({ filename: 'D:/NeDB_file/file', autoload: true });
+var Datastore = require('nedb'), db = new Datastore({ filename: 'D:/NeDB_file/file2', autoload: true });
 const { ipcMain } = require('electron');
 
 const template = [
   {
     label: 'New Template',
-    accelerator: 'CmdOrCtrl+T', 
+    accelerator: 'CmdOrCtrl+T',
     click: async () => { createBrowserWindow(); }
   },
   {
     label: 'New Form',
-    accelerator: 'CmdOrCtrl+F', 
+    accelerator: 'CmdOrCtrl+F',
     click: () => {
       dialog.
         dialog.showMessageBoxSync({
@@ -38,48 +38,58 @@ app.whenReady().then(() => {
   })
 })
 
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit()
-})
-
-
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    width: 800,    height: 600,
+    width: 800, height: 600,
     webPreferences: { preload: path.join(__dirname, 'preload.js') }
   })
-
-
-// APIS
-
-ipcMain.on('templates', (SendtoDatabase, data) => {
-  console.log(data)
-  db = new Datastore({ filename: 'D:/NeDB_file/file', autoload: true });
-  if (data != null || data != null) {
-       db.insert(data, function (err) {})  
-      }
-    });
   mainWindow.loadFile('index.html')
 }
-
-var array = [];
-db.find({}, function (err, data) {
-  array = data;
-})
-
-ipcMain.handle("get-object", (event) => {
-return array;
-});
 
 const createBrowserWindow = () => {
   const win = new BrowserWindow({
     width: 450,
     height: 550,
+    autoHideMenuBar:true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
 
   win.loadFile('newTemplate.html');
+  ipcMain.on('templates', (SendtoDatabase, data) => {
+    console.log(data)
+    if (data != null || data != null) {
+      db.insert(data, function (err) { })
+    }
+    win.close();
+    // refreashDB();
+  });
 }
+
+
+// APIS
+
+// ipcMain.on('templates', (SendtoDatabase, data) => {
+//   console.log(data)
+//   db = new Datastore({ filename: 'D:/NeDB_file/file', autoload: true });
+//   if (data != null || data != null) {
+//        db.insert(data, function (err) {})  
+//       }
+//     });
+
+var array = [];
+db.find({}, function (err, data) {
+  array = data;
+})
+
+
+ipcMain.handle("get-object", (event) => {
+  return array;
+});
+
+// function refreashDB(){
+//   ipcMain.handle("", (event) => {
+//     return array;
+//   });
+// }

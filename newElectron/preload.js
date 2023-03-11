@@ -8,6 +8,6 @@ contextBridge.exposeInMainWorld('api', {
   gettemplate: async () => {
     const response = await ipcRenderer.invoke("get-object");
     return response;
-  }
+  },
 
 });
